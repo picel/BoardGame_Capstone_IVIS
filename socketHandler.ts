@@ -1,5 +1,6 @@
 /** --------------------- HANDLER IMPORTS --------------------- */
 import InitHandler from './handlers/initHandler';
+import onDisconnect from './handlers/init/onDisconnect';
 /** ----------------------------------------------------------- */
 
 /** ---------------------- MODEL IMPORTS ---------------------- */
@@ -14,6 +15,10 @@ export default function (io: any) {
 
     io.on('connection', function (socket: any) {
         // console.log("connected " + socket.id)
+
+        socket.on('disconnect', function () {
+            onDisconnect(socket, games);
+        });
         
         InitHandler(socket, games);
 

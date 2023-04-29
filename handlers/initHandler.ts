@@ -1,16 +1,17 @@
 import onInit from './init/onInit';
-import onDisconnect from './init/onDisconnect';
 import onReady from './init/onReady';
 import onEmotion from './init/onEmotion';
 import Game from '../models/game';
 
+import errorHandler from './errorHandler';
+
 export default function (socket: any, games: Game[]) {
     socket.on('init', function (game: number) {
+        if (games[game] === undefined) {
+            errorHandler(1, socket);
+            return;
+        }
         onInit(socket, games[game]);
-    });
-
-    socket.on('disconnect', function () {
-        onDisconnect(socket, games);
     });
 
     socket.on('ready', function (sign: string) {
