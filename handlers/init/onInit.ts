@@ -1,8 +1,9 @@
-import User from '../../models/user.js';
+import Game from '../../models/game';
+import User from '../../models/user';
 
-import createRoom from './createRoom.js';
+import createRoom from './createRoom';
 
-export default function (socket, game) {
+export default function (socket:any, game: Game) {
     console.log("init start " + game)
 
     let limit = game.getLimit();

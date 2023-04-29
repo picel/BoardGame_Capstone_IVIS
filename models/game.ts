@@ -1,5 +1,12 @@
+import Room from './room';
+import User from './user';
+
 export default class Game {
-    constructor(limit) {
+    private limit: number;
+    private waiting_queue: User[];
+    private rooms: Room[];
+
+    constructor(limit: number) {
         this.limit = limit;
         this.waiting_queue = [];
         this.rooms = [];
@@ -18,9 +25,9 @@ export default class Game {
     }
 
     popWaitingQueue() {
-        let result = [];
+        let result: User[] = [];
         for (let i = 0; i < this.limit; i++) {
-            result.push(this.waiting_queue.shift());
+            result.push(this.waiting_queue.shift() as User);
         }
         return result;
     }

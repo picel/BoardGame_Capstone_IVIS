@@ -1,5 +1,11 @@
+import User from "./user";
+
 export default class Room {
-    constructor(room_id) {
+    private room_id: string;
+    private users: User[];
+    private ready: number;
+
+    constructor(room_id: string) {
         this.room_id = room_id;
         this.users = [];
         this.ready = 0;
@@ -13,11 +19,11 @@ export default class Room {
         return this.users;
     }
 
-    addUser(user) {
+    addUser(user: User) {
         this.users.push(user);
     }
 
-    getOpponents(user) {
+    getOpponents(user: string) {
         return this.users.filter((u) => u.getUuid() !== user);
     }
 

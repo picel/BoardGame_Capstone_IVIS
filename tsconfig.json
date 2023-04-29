@@ -1,0 +1,17 @@
+{
+    "scripts": {
+        "start": "ts-node index.ts"
+    },
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "sourceMap": true,
+        "outDir": "./dist",
+        "strict": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "node"
+
+    },
+    "exclude": ["node_modules", "**/*.spec.ts"]
+}
