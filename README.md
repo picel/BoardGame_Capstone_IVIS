@@ -46,3 +46,6 @@ Oracle Cloud Free Tier
     - `node ./dist/index.js` : 서버 실행
 - 빌드 없이 실행
     - `npx ts-node ./index.ts` : 서버 실행
+
+## 주의 사항
+- PORT는 기본적으로 3000번으로 설정되어 있습니다.<br>환경 변수(`process.env.PORT`)를 통해 변경할 수 있습니다.
