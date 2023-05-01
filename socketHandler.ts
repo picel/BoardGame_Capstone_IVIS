@@ -1,5 +1,6 @@
 /** --------------------- HANDLER IMPORTS --------------------- */
 import InitHandler from './handlers/initHandler';
+import jokerHandler from './handlers/jokerHandler';
 import onDisconnect from './handlers/init/onDisconnect';
 /** ----------------------------------------------------------- */
 
@@ -10,7 +11,7 @@ import Game from './models/game';
 
 export default function (io: any) {
     let games = [
-        new Game(2)
+        new Game(0, 2)
     ];
 
     io.on('connection', function (socket: any) {
@@ -21,6 +22,8 @@ export default function (io: any) {
         });
         
         InitHandler(socket, games);
+
+        jokerHandler(socket, games[0]);
 
         // socket.on('message', function (msg) {
         //     io.emit('message', msg);

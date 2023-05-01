@@ -3,19 +3,19 @@ import Room from "../../models/room";
 
 import errorHandler from "../errorHandler";
 
-export default function (sign: string, games: Game[], socket: any) {
+export default function (sign: string, games: Game[], socket: any): boolean {
     console.log(socket.id + " ready!")
     if (sign === 'ok') {
         let game = games.find((g) => g.getRooms().find((r) => r.getUsers().find((u) => u.getUuid() === socket.id)));
         if (!game) {
             errorHandler(1, socket);
-            return
+            return false;
         }
 
         let room = game.getRooms().find((r) => r.getUsers().find((u) => u.getUuid() === socket.id));
         if (!room) {
             errorHandler(2, socket);
-            return
+            return false;
         }
 
         room.setReady();
@@ -27,7 +27,10 @@ export default function (sign: string, games: Game[], socket: any) {
             console.log("all user ready!")
             room.getUsers().forEach((user) => {
                 user.getSocket().emit('ready', 'ok');
+                user.setInGame(true);
             });
+            return true;
         }
     }
+    return false;
 }

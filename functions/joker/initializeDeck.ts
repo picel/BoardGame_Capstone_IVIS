@@ -1,5 +1,3 @@
-import removeDuplicates from "./removeDuplicates";
-
 export default function (player: number) {
     let deck: string[] = [];
 
@@ -15,6 +13,8 @@ export default function (player: number) {
         deck.push("D" + jString);
     }
 
+    deck.push("joker");
+
     // shuffle deck
     deck.sort(() => Math.random() - 0.5);
     
@@ -26,11 +26,6 @@ export default function (player: number) {
         decks[i % player].push(deck[i]);
     }
     let joker = Math.floor(Math.random() * player);
-    decks[joker].push("joker");
-
-    for (let i = 0; i < decks.length; i++) {
-        decks[i] = removeDuplicates(decks[i]);
-    }
 
     return decks;
 }

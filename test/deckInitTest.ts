@@ -1,6 +1,6 @@
 import initializeDeck from "../functions/joker/initializeDeck";
 
-let Deck: string[][] = initializeDeck(4);
+let Deck: string[][] = initializeDeck(2);
 
 console.log(Deck);
 

@@ -4,11 +4,21 @@ export default class Room {
     private room_id: string;
     private users: User[];
     private ready: number;
+    private turn: number;
 
     constructor(room_id: string) {
         this.room_id = room_id;
         this.users = [];
         this.ready = 0;
+        this.turn = 0;
+    }
+
+    nextTurn() {
+        this.turn = (this.turn + 1) % this.users.length;
+    }
+
+    getTurn() {
+        return this.turn;
     }
 
     getRoomId() {

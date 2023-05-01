@@ -26,5 +26,11 @@ export default function (error: number, socket: any) {
                 message: "user is undefined"
             });
             socket.disconnect();
+        case 10: /** @description: made an invalid input out of turn */
+            socket.emit('error', {
+                status: 400,
+                message: "made an invalid input out of turn"
+            });
+            socket.disconnect();
     }
 }
