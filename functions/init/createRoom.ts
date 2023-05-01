@@ -10,7 +10,6 @@ export default function (game: Game) {
     users.forEach((user) => {
         room.addUser(user);
         user.setRoom(room_id);
-        // send message to user
 	console.log("room number is " + room.getRoomId())
         user.getSocket().emit('set_room', room.getRoomId());
     });

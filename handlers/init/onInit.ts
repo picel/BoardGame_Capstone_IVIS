@@ -1,7 +1,7 @@
 import Game from '../../models/game';
 import User from '../../models/user';
 
-import createRoom from './createRoom';
+import createRoom from '../../functions/init/createRoom';
 
 export default function (socket:any, game: Game) {
     console.log("init start " + game)
