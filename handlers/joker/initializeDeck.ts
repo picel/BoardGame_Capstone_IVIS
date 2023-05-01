@@ -1,3 +1,5 @@
+import removeDuplicates from "./removeDuplicates";
+
 export default function (player: number) {
     let deck: string[] = [];
 
@@ -25,5 +27,10 @@ export default function (player: number) {
     }
     let joker = Math.floor(Math.random() * player);
     decks[joker].push("joker");
+
+    for (let i = 0; i < decks.length; i++) {
+        decks[i] = removeDuplicates(decks[i]);
+    }
+
     return decks;
 }
