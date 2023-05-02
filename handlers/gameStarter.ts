@@ -2,7 +2,7 @@ import Game from "../models/game";
 import User from "../models/user";
 
 import errorHandler from "./errorHandler";
-import jokerInit from "./joker/init";
+import jokerInit from "../controllers/joker/gameInit";
 
 export default function (socket: any, games: Game[]) {
     // find socket's game

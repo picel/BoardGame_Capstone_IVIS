@@ -6,7 +6,7 @@ import onPeek from "./joker/onPeek";
 import onSelect from "./joker/onSelect";
 
 import errorHandler from "./errorHandler";
-import nextTurn from "./joker/nextTurn";
+import nextTurn from "../controllers/joker/nextTurn";
 
 export default function (socket: any, game: Game) {
     socket.on('peek', function(index: number) {

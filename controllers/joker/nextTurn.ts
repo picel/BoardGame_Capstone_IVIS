@@ -1,4 +1,4 @@
-import removeDuplicates from "../../functions/joker/removeDuplicates";
+import removeDuplicates from "./removeDuplicates";
 import Room from "../../models/room";
 import User from "../../models/user";
 import sendRole from "./sendRole";

@@ -1,7 +1,7 @@
 import User from "../../models/user";
 
-import initializeDeck from "../../functions/joker/initializeDeck";
-import removeDuplicates from "../../functions/joker/removeDuplicates";
+import initializeDeck from "./initializeDeck";
+import removeDuplicates from "./removeDuplicates";
 import Room from "../../models/room";
 import sendRole from "./sendRole";
 

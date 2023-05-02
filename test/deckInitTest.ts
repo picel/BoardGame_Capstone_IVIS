@@ -1,4 +1,4 @@
-import initializeDeck from "../functions/joker/initializeDeck";
+import initializeDeck from "../controllers/joker/initializeDeck";
 
 let Deck: string[][] = initializeDeck(2);
 
