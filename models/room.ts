@@ -3,13 +3,13 @@ import User from "./user";
 export default class Room {
     private room_id: string;
     private users: User[];
-    private ready: number;
+    private ready: Set<string>;
     private turn: number;
 
     constructor(room_id: string) {
         this.room_id = room_id;
         this.users = [];
-        this.ready = 0;
+        this.ready = new Set();
         this.turn = 0;
     }
 
@@ -38,10 +38,10 @@ export default class Room {
     }
 
     getReady() {
-        return this.ready;
+        return this.ready.size;
     }
 
-    setReady() {
-        this.ready++;
+    setReady(uuid: string) {
+        this.ready.add(uuid);
     }
 }

@@ -18,7 +18,7 @@ export default function (sign: string, games: Game[], socket: any): boolean {
             return false;
         }
 
-        room.setReady();
+        room.setReady(socket.id);
 
         console.log(room.getUsers().length + " 사용자 수")
         console.log(room.getReady() + " 준비된 사용자 수")
