@@ -1,6 +1,6 @@
-import Game from "../../models/game";
+import Game from "../models/game";
 
-import errorHandler from "../errorHandler";
+import errorHandler from "./errorHandler";
 
 export default function (socket: any, games: Game[]) {
     console.log("disconnected " + socket.id)

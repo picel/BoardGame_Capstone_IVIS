@@ -1,7 +1,7 @@
 /** --------------------- HANDLER IMPORTS --------------------- */
 import InitHandler from './handlers/initHandler';
 import jokerHandler from './handlers/jokerHandler';
-import onDisconnect from './handlers/init/onDisconnect';
+import onDisconnect from './handlers/onDisconnect';
 /** ----------------------------------------------------------- */
 
 /** ---------------------- MODEL IMPORTS ---------------------- */
