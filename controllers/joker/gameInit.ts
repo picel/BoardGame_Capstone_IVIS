@@ -36,7 +36,11 @@ export default function (room: Room) {
         result['myDeck'] = users[i].getDeck();
         result['enemyDeckSize'] = users[(i + 1) % users.length].getDeck().length;
 
-        users[i].getSocket().emit('deck', result);
+        console.log(users[i].getSocket().id, result);
+
+        setTimeout(function() {
+            users[i].getSocket().emit('deck', result);
+        }, 1000);
     }
     sendRole(room);
     return

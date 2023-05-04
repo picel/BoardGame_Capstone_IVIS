@@ -6,11 +6,19 @@ export default function (room: Room) {
     let users: User[] = room.getUsers();
     
     for (let i = 0; i < users.length; i++) {
-        if (i === turn) {
-            users[i].getSocket().emit('role', true);
-        } else {
-            users[i].getSocket().emit('role', false);
-        }
+        // if (i === turn) {
+        //     users[i].getSocket().emit('role', 1);
+        // } else {
+        //     users[i].getSocket().emit('role', 0);
+        // }
+
+        setTimeout(function() {
+            if (i === turn) {
+                users[i].getSocket().emit('role', 1);
+            } else {
+                users[i].getSocket().emit('role', 0);
+            }
+        } , 1000);
     }
     return
 }
