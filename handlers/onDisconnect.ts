@@ -20,19 +20,26 @@ export default function (socket: any, games: Game[]) {
             errorHandler(3, socket);
             return
         }
-        console.log('user disconnected');
         let room_id = room.getRoomId();
 
-        // if user is in a room, notify the other user
+        // if user is in a room, send result 1 to all users in the room
         if (chicken.getRoom()) {
             let opponents = room.getOpponents(chicken.getUuid());
             if (opponents.length > 0) {
                 for (let opponent of opponents) {
-                    opponent.getSocket().emit('message', 'He was a good chicken.');
-                    opponent.setRoom("");
+                    opponent.getSocket().emit('result', 1);
                 }
             }
             games = games.filter((g) => g.getRooms().find((r) => r.getRoomId() !== room_id));
+        }
+    } else {
+        // remove chicken from waiting list in any games
+        for (let game of games) {
+            let waiting = game.getWaitingQueue();
+            if (waiting) {
+                waiting = waiting.filter((u) => u.getUuid() !== socket.id);
+                console.log("the chicken was in waiting queue");
+            }
         }
     }
 }
