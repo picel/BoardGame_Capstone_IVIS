@@ -16,8 +16,6 @@ export default function (games: Game[], emotion: string, socket: any) {
     
     let opponents = room.getOpponents(socket.id);
 
-    console.log(socket.id + " : " + emotion);
-
     opponents.forEach((opponent) => {
         opponent.getSocket().emit('emotion', emotion);
     });

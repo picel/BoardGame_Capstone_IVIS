@@ -25,7 +25,6 @@ export default function (player: number) {
     for (let i = 0; i < deck.length; i++) {
         decks[i % player].push(deck[i]);
     }
-    let joker = Math.floor(Math.random() * player);
 
     return decks;
 }
