@@ -83,7 +83,7 @@ Oracle Cloud Free Tier
 <br><br>
 - 빌드 후 실행
     - `npx tsc` : Typescript 컴파일
-    - `node ./dist/index.js` : 서버 실행
+    - `node ./build/index.js` : 서버 실행
 - 빌드 없이 실행
     - `npx ts-node ./index.ts` : 서버 실행
 
