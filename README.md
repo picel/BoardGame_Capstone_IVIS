@@ -7,12 +7,13 @@
 - ~~대기열 및 방 분리 기능 구현~~
 - ~~게임 시작 준비 기능 구현~~
 - ~~감정 정보 전송 중계 기능 구현~~
-- 타이머 기능 구현
-- 조커 게임 구현
+- ~~타이머 기능 구현~~
+- ~~조커 게임 구현~~
     - ~~게임 이벤트 구현~~
-    - 게임 종료 구현
-    - 게임 결과 전송 구현
-    - disconnect 이벤트 핸들러 구현
+    - ~~게임 종료 구현~~
+    - ~~게임 결과 전송 구현~~
+    - ~~disconnect 이벤트 핸들러 구현~~
+- 테스팅
 
 ## 개발 환경
 - Node.js
@@ -66,6 +67,14 @@ Oracle Cloud Free Tier
     - index(number) : 선택한 카드의 인덱스
 - `select` : 카드 선택 확정
     - index(number) : 선택한 카드의 인덱스
+- `result` : 게임 결과 전송
+    - result(number) : 
+        - 0 : -
+        - 1 : 승리
+        - 2 : 패배
+        - 3 : 판정패 (시간 초과)
+- `exception` : 예외 발생 시 전송
+    - exception(string) : 예외 정보
 
 ## 실행 방법
 - `git clone https://github.com/picel/BoardGame_Capstone_IVIS.git`
