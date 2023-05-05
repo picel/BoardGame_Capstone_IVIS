@@ -1,7 +1,7 @@
 import Game from "../../models/game";
 import Room from "../../models/room";
 
-import errorHandler from "../errorHandler";
+import errorHandler from "../exceptionHandler";
 
 export default function (sign: string, games: Game[], socket: any): boolean {
     console.log(socket.id + " ready!")

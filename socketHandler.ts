@@ -1,7 +1,7 @@
 /** --------------------- HANDLER IMPORTS --------------------- */
 import InitHandler from './handlers/initHandler';
 import jokerHandler from './handlers/jokerHandler';
-import onDisconnect from './handlers/onDisconnect';
+import disconnectHandler from './handlers/disconnectHandler';
 /** ----------------------------------------------------------- */
 
 /** ---------------------- MODEL IMPORTS ---------------------- */
@@ -18,7 +18,7 @@ export default function (io: any) {
         // console.log("connected " + socket.id)
 
         socket.on('disconnect', function () {
-            onDisconnect(socket, games);
+            disconnectHandler(socket, games);
         });
         
         InitHandler(socket, games);

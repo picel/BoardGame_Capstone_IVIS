@@ -1,5 +1,5 @@
-import Room from "../../models/room";
-import timeOutEvent from "./timeOutEvent";
+import Room from "./room";
+import timeOutEvent from "../controllers/joker/timeOutEvent";
 
 export default class Timer {
     private timer: number;

@@ -1,5 +1,5 @@
 import Game from "../../models/game";
-import errorHandler from "../errorHandler";
+import errorHandler from "../exceptionHandler";
 
 export default function (games: Game[], emotion: string, socket: any) {
     let game = games.find((g) => g.getRooms().find((r) => r.getUsers().find((u) => u.getUuid() === socket.id)));

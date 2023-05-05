@@ -1,4 +1,4 @@
-import Timer from "../controllers/joker/timer";
+import Timer from "./timer";
 import User from "./user";
 
 export default class Room {
