@@ -7,6 +7,7 @@ import onSelect from "./joker/onSelect";
 
 import errorHandler from "./errorHandler";
 import nextTurn from "../controllers/joker/nextTurn";
+import Timer from "../controllers/joker/timer";
 
 export default function (socket: any, game: Game) {
     socket.on('peek', function(index: number) {
@@ -35,6 +36,9 @@ export default function (socket: any, game: Game) {
             return;
         }
         onSelect(index, defender, attacker);
+        
+        let timer: Timer = room.getTimer();
+        timer.stopTimer();
 
         nextTurn(room);
     });

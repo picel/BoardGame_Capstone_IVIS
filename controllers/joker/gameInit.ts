@@ -4,6 +4,7 @@ import initializeDeck from "./initializeDeck";
 import removeDuplicates from "./removeDuplicates";
 import Room from "../../models/room";
 import sendRole from "./sendRole";
+import timeOutEvent from "./timeOutEvent";
 
 export default function (room: Room) {
     function initialize (len: number) {
@@ -43,5 +44,10 @@ export default function (room: Room) {
         }, 1000);
     }
     sendRole(room);
+
+    // start timer
+    room.getTimer().startTimer(room);
+
+
     return
 }

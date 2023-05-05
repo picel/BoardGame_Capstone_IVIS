@@ -1,3 +1,4 @@
+import Timer from "../controllers/joker/timer";
 import User from "./user";
 
 export default class Room {
@@ -5,12 +6,14 @@ export default class Room {
     private users: User[];
     private ready: Set<string>;
     private turn: number;
+    private timer: Timer;
 
     constructor(room_id: string) {
         this.room_id = room_id;
         this.users = [];
         this.ready = new Set();
         this.turn = 0;
+        this.timer = new Timer();
     }
 
     nextTurn() {
@@ -43,5 +46,9 @@ export default class Room {
 
     setReady(uuid: string) {
         this.ready.add(uuid);
+    }
+
+    getTimer() {
+        return this.timer;
     }
 }

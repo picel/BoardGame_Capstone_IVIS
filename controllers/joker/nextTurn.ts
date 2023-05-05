@@ -3,6 +3,7 @@ import Room from "../../models/room";
 import User from "../../models/user";
 import sendRole from "./sendRole";
 import checkGameSet from "./checkGameSet";
+import timeOutEvent from "./timeOutEvent";
 
 export default function (room: Room) {
     room.nextTurn();
@@ -35,4 +36,7 @@ export default function (room: Room) {
     if (flag) {
         return;
     }
+
+    // start timer
+    room.getTimer().startTimer(room);
 }
