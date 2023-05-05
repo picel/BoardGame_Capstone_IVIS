@@ -32,6 +32,8 @@ export default function (socket: any, games: Game[]) {
             }
             games = games.filter((g) => g.getRooms().find((r) => r.getRoomId() !== room_id));
         }
+
+        room.getTimer().stopTimer();
     } else {
         // remove chicken from waiting list in any games
         for (let game of games) {
