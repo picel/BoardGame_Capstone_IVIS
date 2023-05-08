@@ -89,3 +89,4 @@ Oracle Cloud Free Tier
 
 ## 주의 사항
 - PORT는 기본적으로 3000번으로 설정되어 있습니다.<br>환경 변수(`process.env.PORT`)를 통해 변경할 수 있습니다.
+- `echo "export PORT=3000" >> ~/.env` : PORT 환경 변수 설정
