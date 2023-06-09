@@ -25,8 +25,13 @@ export default function (socket: any, games: Game[]) {
         // if user is in a room, send result 1 to all users in the room
         if (chicken.getRoom()) {
             let opponents = room.getOpponents(chicken.getUuid());
-            if (opponents.length > 0) {
+            let opponentsLength = opponents.length;
+            if (game.getIsAI()) {
+                opponentsLength--;
+            }
+            if (opponentsLength > 0) {
                 for (let opponent of opponents) {
+                    if (opponent.getSocket() === undefined) continue;
                     opponent.getSocket().emit('result', 1);
                 }
             }

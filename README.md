@@ -13,6 +13,7 @@
     - ~~게임 종료 구현~~
     - ~~게임 결과 전송 구현~~
     - ~~disconnect 이벤트 핸들러 구현~~
+    - ~~AI 구현~~
 - 테스팅
 
 ## 개발 환경
@@ -20,6 +21,7 @@
     - `Typescript`
     - `Express`
     - `Socket.io`
+    - `Open AI API`
 
 ## 서버 정보
 Oracle Cloud Free Tier
@@ -90,3 +92,5 @@ Oracle Cloud Free Tier
 ## 주의 사항
 - PORT는 기본적으로 3000번으로 설정되어 있습니다.<br>환경 변수(`process.env.PORT`)를 통해 변경할 수 있습니다.
 - `echo "export PORT=3000" >> ~/.env` : PORT 환경 변수 설정
+
+- Open AI API 사용을 위해 API Key가 필요합니다.<br>환경 변수(`process.env.OPENAI_SECRET_KEY`, `OPENAI_ORGANIZATION`)를 통해 설정할 수 있습니다.

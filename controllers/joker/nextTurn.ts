@@ -1,11 +1,10 @@
 import removeDuplicates from "./removeDuplicates";
 import Room from "../../models/room";
 import User from "../../models/user";
-import sendRole from "./sendRole";
+import sendRole from "../sendRole";
 import checkGameSet from "./checkGameSet";
-import timeOutEvent from "./timeOutEvent";
 
-export default function (room: Room) {
+export default async function (room: Room) : Promise<boolean> {
     room.nextTurn();
     sendRole(room);
 
@@ -21,6 +20,8 @@ export default function (room: Room) {
     }
 
     for (let i = 0; i < users.length; i++) {
+        if (users[i].getSocket() === undefined) continue;
+
         let result: any = {};
 
         result['myDeck'] = users[i].getDeck();
@@ -34,9 +35,12 @@ export default function (room: Room) {
     let flag: boolean = checkGameSet(users);
 
     if (flag) {
-        return;
+        return true;
+    } else {
+        // start timer
+        room.getTimer().startTimer(room, 22);
+        
+        return false;
     }
 
-    // start timer
-    room.getTimer().startTimer(room);
 }

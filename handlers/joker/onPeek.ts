@@ -1,4 +1,5 @@
 export default function (index: number, defender: any) {
-    defender.getSocket().emit('peek', index);
+    if (defender === undefined) return;
+    defender.emit('peek', index);
     return
 }

@@ -16,9 +16,10 @@ export default function (users : User[]) : boolean {
 
         if (result !== 0) {
             let socket: any = users[i].getSocket();
+            cnt += 1;
+            if (socket === undefined) continue;
             socket.emit('result', result);
             console.log(socket.id, " ", result);
-            cnt += 1;
         } 
     }
 

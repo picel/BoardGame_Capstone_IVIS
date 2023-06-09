@@ -23,10 +23,16 @@ export default function (sign: string, games: Game[], socket: any): boolean {
         console.log(room.getUsers().length + " 사용자 수")
         console.log(room.getReady() + " 준비된 사용자 수")
 
-        if (room.getReady() === room.getUsers().length) {
+        let limit = room.getUsers().length;
+        if (game.getIsAI()) {
+            limit -= 1;
+        }
+        if (room.getReady() === limit) {
             console.log("all user ready!")
             room.getUsers().forEach((user) => {
-                user.getSocket().emit('ready', 'ok');
+                if (user.getSocket() !== undefined) {
+                    user.getSocket().emit('ready', 'ok');
+                }
                 user.setInGame(true);
             });
             return true;

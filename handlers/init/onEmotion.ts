@@ -13,10 +13,24 @@ export default function (games: Game[], emotion: string, socket: any) {
         errorHandler(2, socket);
         return
     }
+
+    // set emotion
+    let user = room.getUsers().find((u) => u.getUuid() === socket.id);
+    if (!user) {
+        errorHandler(3, socket);
+        return
+    }
+    if (user.getSocket() !== undefined) {
+        user.setEmotion(JSON.stringify(emotion));
+    }
     
     let opponents = room.getOpponents(socket.id);
 
     opponents.forEach((opponent) => {
-        opponent.getSocket().emit('emotion', emotion);
+        if (opponent.getSocket() !== undefined) {
+            opponent.getSocket().emit('emotion', emotion);
+        }
     });
+    
+    // console.log(JSON.stringify(emotion));
 }
