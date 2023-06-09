@@ -2,6 +2,7 @@ import Game from "../models/game";
 
 import exceptionHandler from "./exceptionHandler";
 import jokerInit from "../controllers/joker/gameInit";
+import pokerInit from "../controllers/poker/gameInit";
 
 export default function (socket: any, games: Game[]) {
     // find socket's game
@@ -19,12 +20,11 @@ export default function (socket: any, games: Game[]) {
 
     let code: number = game.getCode();
 
-    switch (code) {
-        case 0: // joker
-            jokerInit(room);
-            break;
-        default:
-            exceptionHandler(1, socket);
-            break;
+    if (code === 0 || code === 1 || code === 2 || code === 3) {
+        jokerInit(room);
+    } else if (code === 4) {
+        pokerInit(room);
+    } else {
+        exceptionHandler(1, socket);
     }
 }

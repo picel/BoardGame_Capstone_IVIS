@@ -4,15 +4,14 @@
     },
     "compilerOptions": {
         "target": "es6",
-        "module": "commonjs",
+        "module": "CommonJS",
         "sourceMap": true,
         "outDir": "./build",
         "strict": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
-        "moduleResolution": "node"
-
+        "moduleResolution": "node",
     },
     "exclude": ["node_modules", "**/*.spec.ts"]
 }

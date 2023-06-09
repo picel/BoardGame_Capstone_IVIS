@@ -4,6 +4,8 @@ export default class User {
     private room: string;
     private isInGame: boolean;
     private deck: string[];
+    private showDeck: string[];
+    private emotions: string[];
 
     constructor(uuid: string, socket: any) {
         this.uuid = uuid;
@@ -11,6 +13,8 @@ export default class User {
         this.room = "";
         this.isInGame = false;
         this.deck = [];
+        this.showDeck = [];
+        this.emotions = [];
     }
 
     setDeck(deck: string[]) {
@@ -19,6 +23,14 @@ export default class User {
 
     getDeck() {
         return this.deck;
+    }
+
+    setShowDeck(show: string[]) {
+        this.showDeck = show;
+    }
+
+    getShowDeck() {
+        return this.showDeck;
     }
 
     setRoom(room: string) {
@@ -43,5 +55,16 @@ export default class User {
 
     getUuid() {
         return this.uuid;
+    }
+
+    setEmotion(emotion: string) {
+        this.emotions.push(emotion);
+        if (this.emotions.length > 3) {
+            this.emotions.shift();
+        }
+    }
+
+    getEmotions() {
+        return this.emotions;
     }
 }
