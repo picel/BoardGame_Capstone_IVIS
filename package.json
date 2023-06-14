@@ -18,6 +18,7 @@
     "waait": "^1.0.5"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.2",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.1"
   }

@@ -7,8 +7,8 @@ export default class Room {
     private ready: Set<string>;
     private turn: number;
     private timer: Timer;
-    private guessed: boolean;
-    private answered: boolean;
+    private guess: string;
+    private answer: string;
 
     constructor(room_id: string) {
         this.room_id = room_id;
@@ -16,24 +16,29 @@ export default class Room {
         this.ready = new Set();
         this.turn = 0;
         this.timer = new Timer();
-        this.guessed = false;
-        this.answered = false;
+        this.guess = '';
+        this.answer = '';
     }
 
-    switchGuessed() {
-        this.guessed = !this.guessed;
+    setAnswer(answer: string) {
+        this.answer = answer;
     }
 
-    getGuessed() {
-        return this.guessed;
+    setGuess(guess: string) {
+        this.guess = guess;
     }
 
-    switchAnswered() {
-        this.answered = !this.answered;
+    getGuess() {
+        return this.guess;
     }
 
-    getAnswered() {
-        return this.answered;
+    getAnswer() {
+        return this.answer;
+    }
+
+    resetAnswernGuess() {
+        this.answer = '';
+        this.guess = '';
     }
 
     nextTurn() {

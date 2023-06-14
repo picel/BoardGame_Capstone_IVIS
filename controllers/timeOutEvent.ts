@@ -6,7 +6,7 @@ export default function (room: Room) {
     let attacker = users[turn];
     let opponents = room.getOpponents(attacker.getUuid());
 
-    if (room.getGuessed() && !room.getAnswered()) {
+    if (room.getGuess() !== '' && room.getAnswer() === '') {
         opponents[0].getSocket().emit('result', 3);
         attacker.getSocket().emit('result', 1);
     } else {

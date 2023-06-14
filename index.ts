@@ -9,10 +9,11 @@ dotenv.config();
 
 const app = express();
 const server = http.createServer(app);
-const io = new SocketIOServer(server, { 
+const io = new SocketIOServer(server, {
     path: '/api/socket.io', 
     cors: { origin: '*' },
 });
+
 const PORT = process.env.PORT || 3000;
 
 socketHandler(io);

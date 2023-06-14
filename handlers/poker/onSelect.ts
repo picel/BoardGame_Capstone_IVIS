@@ -1,18 +1,18 @@
 import User from "../../models/user";
 
-export default function (index: number, symbol: string, defender: User, attacker: User) {
-    if (defender.getSocket() !== undefined) {
-        defender.getSocket().emit('poker_select', index);
-    }
-
+export default function (index: number, select: boolean, answer: string,  defender: User, attacker: User) {
     let card: string = defender.getDeck()[index];
     defender.setDeck(defender.getDeck().filter((c) => c !== card));
 
-    // if card's first character is same as symbol, add card to defender's show deck.
-    if (card[0] === symbol) {
-        defender.setShowDeck(defender.getShowDeck().concat(card));
+    let truth: boolean = card[0] === answer;
+
+    let attackerShowDeck: string[] = attacker.getShowDeck();
+    let defenderShowDeck: string[] = defender.getShowDeck();
+
+    if (truth === select) {
+        defenderShowDeck.push(card);
     } else {
-        attacker.setShowDeck(attacker.getShowDeck().concat(card));
+        attackerShowDeck.push(card);
     }
 
     return

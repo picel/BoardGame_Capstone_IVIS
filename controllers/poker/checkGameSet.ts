@@ -9,15 +9,19 @@ export default function (users : User[]) : boolean {
         let showDeck: string[] = users[i].getShowDeck();
 
         for (let j = 0; j < showDeck.length; j++) {
-            let card: string = showDeck[j];
-            let num: number = map.get(card) || 0;
+            let card: string = showDeck[j][0];
+            let num: number = 0;
+            if (map.has(card)) {
+                num = map.get(card)!;
+            }
             map.set(card, num + 1);
 
-            if (num + 1 === 2) {
+            if (num + 1 === 3) {
                 loser = i;
                 break;
             }
         }
+        if (loser !== -1) break;
     }
     
     if (loser !== -1) {

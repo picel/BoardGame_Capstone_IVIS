@@ -37,15 +37,14 @@ export default function (socket: any, games: Game[]) {
             opponent.getSocket().emit('poker_guess', guess);
         }
 
-        let guessed: boolean = room.getGuessed();
-        if (!guessed) {
+        if (room.getGuess() === '') {
             room.getTimer().stopTimer();
-            room.switchGuessed();
             room.getTimer().startTimer(room, 17);
         }
+        room.setGuess(guess);
     });
 
-    socket.on('poker_answer', async function(answer: boolean) {
+    socket.on('poker_answer', async function(answer: string) {
         console.log("poker_answer" + socket.id + ": " + answer);
         let game: Game = games.find((g) => g.getRooms().find((r) => r.getUsers().find((u) => u.getUuid() === socket.id)))!;
         let room: Room = game.getRooms().find((r) => r.getUsers().find((u) => u.getUuid() === socket.id))!;
@@ -58,15 +57,15 @@ export default function (socket: any, games: Game[]) {
             opponent.getSocket().emit('poker_answer', answer);
         }
 
-        room.switchAnswered();
+        room.setAnswer(answer);
 
         let timer: Timer = room.getTimer();
         timer.stopTimer();
         timer.startTimer(room, 17);
     });
 
-    socket.on('poker_select', async function(index: number, symbol: string) {
-        console.log("poker_select" + socket.id + ": " + index + ", " + symbol);
+    socket.on('poker_select', async function(index: number, select: boolean) {
+        console.log("poker_select" + socket.id + ": " + index + " " + select);
         let game: Game = games.find((g) => g.getRooms().find((r) => r.getUsers().find((u) => u.getUuid() === socket.id)))!;
         let room: Room = game.getRooms().find((r) => r.getUsers().find((u) => u.getUuid() === socket.id))!;
         let users: User[] = room.getUsers();
@@ -78,13 +77,14 @@ export default function (socket: any, games: Game[]) {
             return; 
         }
 
-        room.switchAnswered();
-        room.switchGuessed();
+        let answer: string = room.getAnswer();
+
+        onSelect(index, select, answer, defender, attacker);
+
+        room.resetAnswernGuess();
 
         let timer: Timer = room.getTimer();
         timer.stopTimer();
-        
-        onSelect(index, symbol, defender, attacker);
 
         nextTurn(room);
     });
