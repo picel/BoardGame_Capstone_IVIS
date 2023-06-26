@@ -15,22 +15,20 @@ export default function (games: Game[], emotion: string, socket: any) {
     }
 
     // set emotion
-    let user = room.getUsers().find((u) => u.getUuid() === socket.id);
+    let user = room.getUsers().find((u) => u.getUuid() === socket.id); // emotion 이벤트를 보낸 유저 찾기
     if (!user) {
         errorHandler(3, socket);
         return
     }
     if (user.getSocket() !== undefined) {
-        user.setEmotion(JSON.stringify(emotion));
+        user.setEmotion(JSON.stringify(emotion)); // 유저 객체에 emotion 정보를 JSON 형태로 저장
     }
     
-    let opponents = room.getOpponents(socket.id);
+    let opponents = room.getOpponents(socket.id); // emotion 이벤트를 보낼 상대방 플레이어 찾기
 
-    opponents.forEach((opponent) => {
+    opponents.forEach((opponent) => { // 상대 플레이어들에게 emotion 이벤트 보내기
         if (opponent.getSocket() !== undefined) {
             opponent.getSocket().emit('emotion', emotion);
         }
     });
-    
-    // console.log(JSON.stringify(emotion));
 }
