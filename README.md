@@ -14,7 +14,13 @@
     - ~~게임 결과 전송 구현~~
     - ~~disconnect 이벤트 핸들러 구현~~
     - ~~AI 구현~~
-- 테스팅
+- ~~포커 게임 구현~~
+    - ~~게임 이벤트 구현~~
+    - ~~게임 종료 구현~~
+    - ~~게임 결과 전송 구현~~
+
+### ToDo
+- 시연용 기능/UI 구현
 
 ## 개발 환경
 - Node.js
@@ -91,6 +97,8 @@ Oracle Cloud Free Tier
 
 ## 주의 사항
 - PORT는 기본적으로 3000번으로 설정되어 있습니다.<br>환경 변수(`process.env.PORT`)를 통해 변경할 수 있습니다.
-- `echo "export PORT=3000" >> ~/.env` : PORT 환경 변수 설정
+- `echo "export PORT=`**[PORT_NUMBER]**`" >> ~/.env` : PORT 환경 변수 설정
 
-- Open AI API 사용을 위해 API Key가 필요합니다.<br>환경 변수(`process.env.OPENAI_SECRET_KEY`, `OPENAI_ORGANIZATION`)를 통해 설정할 수 있습니다.
+- Open AI API 사용을 위해 API Key가 필요합니다.<br>환경 변수(`process.env.OPENAI_SECRET_KEY`, `process.env.OPENAI_ORGANIZATION`)를 통해 설정할 수 있습니다.
+- `echo "export OPENAI_SECRET_KEY=`**[YOUR_SECRETKEY]**`" >> ~/.env` : OPENAI_SECRET_KEY 환경 변수 설정
+- `echo "export OPENAI_ORGANIZATION=`**[YOUR_ORGANIZATION]**`" >> ~/.env` : OPENAI_ORGANIZATION 환경 변수 설정
